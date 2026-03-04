@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0a5c9b;
+  --color-primary-dark: #074a7d;
+  --color-primary-light: #1a7cc4;
+  --color-accent: #14b8a6;
+  --color-accent-dark: #0f9488;
+  --color-bg: #f0f7ff;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #1e293b;
+  background: #ffffff;
+}
+
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
