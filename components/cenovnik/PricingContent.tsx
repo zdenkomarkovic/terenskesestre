@@ -202,7 +202,7 @@ function PricingTable({
   index: number;
   zoneIndex: number;
 }) {
-  const c = colorMap[category.color] ?? colorMap.blue;
+  const c = (colorMap[category.color] ?? colorMap["blue"])!;
   return (
     <motion.div
       className="rounded-2xl overflow-hidden shadow-sm border border-slate-100"
