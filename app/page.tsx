@@ -6,7 +6,6 @@ import Services from "@/components/Services";
 import IVTherapy from "@/components/IVTherapy";
 import NursingCare from "@/components/NursingCare";
 import Coverage from "@/components/Coverage";
-import WhyUs from "@/components/WhyUs";
 import Partnerships from "@/components/Partnerships";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <IVTherapy />
       <NursingCare />
       <Coverage />
-      <WhyUs />
       <Partnerships />
       <Contact />
       <Footer />

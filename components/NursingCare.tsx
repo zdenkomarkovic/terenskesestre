@@ -163,14 +163,14 @@ export default function NursingCare() {
 
         {/* Bottom image banner */}
         <motion.div
-          className="relative h-52 md:h-64 rounded-3xl overflow-hidden shadow-lg"
+          className="relative aspect-video rounded-3xl overflow-hidden shadow-lg"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <Image
-            src="/FB_IMG_1772578998001.jpg"
+            src="/IMG-06a28b45f94aefd6d806d53a3fa90daa-V.jpg"
             alt="Briga o starima u njihovom domu"
             fill
             className="object-cover object-center"

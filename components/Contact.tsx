@@ -99,7 +99,7 @@ export default function Contact() {
           >
             <div className="relative h-[500px] rounded-3xl overflow-hidden">
               <Image
-                src="/FB_IMG_1772579296792.jpg"
+                src="/IMG-bd6a0af525fee20fb19daa1d1fcb1e37-V.jpg"
                 alt="Terenska sestra"
                 fill
                 className="object-cover"

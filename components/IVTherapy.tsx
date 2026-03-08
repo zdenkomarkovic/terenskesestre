@@ -42,7 +42,6 @@ export default function IVTherapy() {
     <section className="bg-[#06111f] py-20 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid lg:grid-cols-[2fr_3fr] gap-10 items-center">
-
           {/* Image */}
           <motion.div
             className="relative mx-auto w-full max-w-sm lg:max-w-none"
@@ -55,7 +54,7 @@ export default function IVTherapy() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-green-400/20 via-sky-400/10 to-purple-500/20 blur-2xl scale-110" />
             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               <Image
-                src="/FB_IMG_1772579296792.jpg"
+                src="/IMG-b6f3caf33fa95121d4f70fde7a114e35-V.jpg"
                 alt="Infuzije detoksikacije i oporavka — Velika Porodica"
                 width={480}
                 height={640}
@@ -75,14 +74,15 @@ export default function IVTherapy() {
               Velika Porodica
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-white mt-2 mb-3 leading-tight">
-              Infuzije detoksikacije<br />
+              Infuzije detoksikacije
+              <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-400">
                 &amp; oporavka
               </span>
             </h2>
             <p className="text-slate-400 mb-8 text-lg">
-              Premium IV terapije koje vraćaju energiju, čiste organizam
-              i pomlađuju telo — direktno u vašem domu.
+              Premium IV terapije koje vraćaju energiju, čiste organizam i pomlađuju telo — direktno
+              u vašem domu.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-5 mb-8">
@@ -95,7 +95,9 @@ export default function IVTherapy() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
                 >
-                  <div className={`inline-flex items-center gap-2 ${t.iconBg} rounded-xl px-3 py-1.5 mb-4`}>
+                  <div
+                    className={`inline-flex items-center gap-2 ${t.iconBg} rounded-xl px-3 py-1.5 mb-4`}
+                  >
                     <span className="text-xl">{t.icon}</span>
                     <span className={`text-xs font-bold uppercase tracking-wide ${t.accent}`}>
                       {t.subtitle}
@@ -121,7 +123,6 @@ export default function IVTherapy() {
               📞 Zakazite infuziju — {PHONE_1}
             </a>
           </motion.div>
-
         </div>
       </div>
     </section>
