@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { PHONE_1 } from "@/lib/constants";
 
 type PriceItem = {
   name: string;
-  price: string;
+  prices: [string, string, string];
   note?: string;
 };
 
@@ -17,6 +18,7 @@ type Category = {
   items: PriceItem[];
 };
 
+// Zona 1 = Beograd | Zona 2 = -10% | Zona 3 = -19%
 const categories: Category[] = [
   {
     id: "infuzije",
@@ -24,13 +26,13 @@ const categories: Category[] = [
     title: "Infuzije",
     color: "blue",
     items: [
-      { name: "Vitaminska", price: "8.500 RSD" },
-      { name: "After Party", price: "10.400 RSD" },
-      { name: "Sport", price: "10.400 RSD" },
-      { name: "Estetski Eliksir", price: "11.400 RSD" },
-      { name: "Detox", price: "9.900 RSD" },
-      { name: "Jet Lag", price: "9.900 RSD" },
-      { name: "Gvožđe", price: "9.900 RSD" },
+      { name: "Vitaminska", prices: ["8.500 RSD", "7.700 RSD", "6.900 RSD"] },
+      { name: "After Party", prices: ["10.400 RSD", "9.400 RSD", "8.400 RSD"] },
+      { name: "Sport", prices: ["10.400 RSD", "9.400 RSD", "8.400 RSD"] },
+      { name: "Estetski Eliksir", prices: ["11.400 RSD", "10.300 RSD", "9.200 RSD"] },
+      { name: "Detox", prices: ["9.900 RSD", "8.900 RSD", "8.000 RSD"] },
+      { name: "Jet Lag", prices: ["9.900 RSD", "8.900 RSD", "8.000 RSD"] },
+      { name: "Gvožđe", prices: ["9.900 RSD", "8.900 RSD", "8.000 RSD"] },
     ],
   },
   {
@@ -39,14 +41,14 @@ const categories: Category[] = [
     title: "Personalizovani dodaci",
     color: "teal",
     items: [
-      { name: "Rastvor", price: "4.500 RSD" },
-      { name: "Magnezijum", price: "1.000 RSD" },
-      { name: "Elektroliti", price: "1.000 RSD" },
-      { name: "Anti-Nausea", price: "1.000 RSD" },
-      { name: "Amino kiseline", price: "1.000 RSD" },
-      { name: "Vitamin C 1g", price: "1.000 RSD" },
-      { name: "N-Acetyl Cysteine", price: "1.000 RSD" },
-      { name: "Complex B", price: "1.000 RSD" },
+      { name: "Rastvor", prices: ["4.500 RSD", "4.100 RSD", "3.700 RSD"] },
+      { name: "Magnezijum", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "Elektroliti", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "Anti-Nausea", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "Amino kiseline", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "Vitamin C 1g", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "N-Acetyl Cysteine", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
+      { name: "Complex B", prices: ["1.000 RSD", "900 RSD", "800 RSD"] },
     ],
   },
   {
@@ -55,8 +57,8 @@ const categories: Category[] = [
     title: "Posete lekara",
     color: "indigo",
     items: [
-      { name: "Poseta Dr. opšte prakse", price: "7.000 RSD" },
-      { name: "Online konsultacija Dr.", price: "2.000 RSD" },
+      { name: "Poseta Dr. opšte prakse", prices: ["7.000 RSD", "6.300 RSD", "5.700 RSD"] },
+      { name: "Online konsultacija Dr.", prices: ["2.000 RSD", "1.800 RSD", "1.600 RSD"] },
     ],
   },
   {
@@ -65,8 +67,8 @@ const categories: Category[] = [
     title: "Kućna nega",
     color: "rose",
     items: [
-      { name: "Presvlačenje pelena", price: "2.000 RSD" },
-      { name: "Kupanje", price: "7.000 RSD" },
+      { name: "Presvlačenje pelena", prices: ["2.000 RSD", "1.800 RSD", "1.600 RSD"] },
+      { name: "Kupanje", prices: ["7.000 RSD", "6.300 RSD", "5.700 RSD"] },
     ],
   },
   {
@@ -75,8 +77,16 @@ const categories: Category[] = [
     title: "Masaža u kući",
     color: "purple",
     items: [
-      { name: "Relax — Antistres", price: "9.000 RSD", note: "45 min" },
-      { name: "Sportska i terapeutska", price: "10.000 RSD", note: "45 min" },
+      {
+        name: "Relax — Antistres",
+        prices: ["9.000 RSD", "8.100 RSD", "7.300 RSD"],
+        note: "45 min",
+      },
+      {
+        name: "Sportska i terapeutska",
+        prices: ["10.000 RSD", "9.000 RSD", "8.100 RSD"],
+        note: "45 min",
+      },
     ],
   },
   {
@@ -85,8 +95,8 @@ const categories: Category[] = [
     title: "Dijagnostika",
     color: "cyan",
     items: [
-      { name: "Ultrazvuk mekih tkiva", price: "16.000 RSD" },
-      { name: "EKG", price: "6.000 RSD" },
+      { name: "Ultrazvuk mekih tkiva", prices: ["16.000 RSD", "14.400 RSD", "13.000 RSD"] },
+      { name: "EKG", prices: ["6.000 RSD", "5.400 RSD", "4.900 RSD"] },
     ],
   },
   {
@@ -95,25 +105,53 @@ const categories: Category[] = [
     title: "Ostale usluge",
     color: "blue",
     items: [
-      { name: "Oksigenator — 30 dana", price: "17.550 RSD", note: "Sa dostavom i montažom" },
-      { name: "Oksigenator — 24 h", price: "4.000 RSD", note: "Sa dostavom i montažom" },
-      { name: "Plasiranje urinarnog katetera", price: "7.500 RSD" },
-      { name: "Previjanje", price: "3.500 RSD", note: "Uključen materijal za 5×5 ranu" },
-      { name: "I.V. injekcija", price: "3.500 RSD" },
-      { name: "I.M. injekcija", price: "3.500 RSD" },
-      { name: "Vađenje krvi", price: "2.000 RSD" },
-      { name: "Klizma", price: "5.500 RSD" },
-      { name: "Ispiranje ušiju", price: "5.500 RSD" },
-      { name: "Plasiranje nazogastrične sonde", price: "7.000 RSD" },
+      {
+        name: "Oksigenator — 30 dana",
+        prices: ["17.550 RSD", "15.800 RSD", "14.200 RSD"],
+        note: "Sa dostavom i montažom",
+      },
+      {
+        name: "Oksigenator — 24 h",
+        prices: ["4.000 RSD", "3.600 RSD", "3.200 RSD"],
+        note: "Sa dostavom i montažom",
+      },
+      { name: "Plasiranje urinarnog katetera", prices: ["7.500 RSD", "6.800 RSD", "6.100 RSD"] },
+      {
+        name: "Previjanje",
+        prices: ["3.500 RSD", "3.200 RSD", "2.900 RSD"],
+        note: "Uključen materijal za 5×5 ranu",
+      },
+      { name: "I.V. injekcija", prices: ["3.500 RSD", "3.200 RSD", "2.900 RSD"] },
+      { name: "I.M. injekcija", prices: ["3.500 RSD", "3.200 RSD", "2.900 RSD"] },
+      { name: "Vađenje krvi", prices: ["2.000 RSD", "1.800 RSD", "1.600 RSD"] },
+      { name: "Klizma", prices: ["5.500 RSD", "5.000 RSD", "4.500 RSD"] },
+      { name: "Ispiranje ušiju", prices: ["5.500 RSD", "5.000 RSD", "4.500 RSD"] },
+      { name: "Plasiranje nazogastrične sonde", prices: ["7.000 RSD", "6.300 RSD", "5.700 RSD"] },
     ],
   },
 ];
 
 const transportItems = [
-  { zone: "Prva zona BG", price: "4.500 RSD", note: "Jedan pravac" },
-  { zone: "Druga zona BG", price: "5.500 RSD", note: "Jedan pravac" },
-  { zone: "Treća zona BG", price: "6.000 RSD", note: "Jedan pravac" },
-  { zone: "Za duže relacije", price: "1,5 €/km", note: "" },
+  { zone: "Prva zona", price: "4.500 RSD", note: "Jedan pravac" },
+  { zone: "Druga zona", price: "5.500 RSD", note: "Jedan pravac" },
+  { zone: "Treća zona", price: "6.000 RSD", note: "Jedan pravac" },
+  { zone: "Duže relacije", price: "1,5 €/km", note: "" },
+];
+
+const zones = [
+  { id: 0, label: "Zona 1", sublabel: "Beograd", color: "bg-[#0a5c9b] text-white" },
+  {
+    id: 1,
+    label: "Zona 2",
+    sublabel: "uskoro gradovi",
+    color: "bg-[#0f9488] text-white",
+  },
+  {
+    id: 2,
+    label: "Zona 3",
+    sublabel: "uskoro gradovi",
+    color: "bg-purple-600 text-white",
+  },
 ];
 
 const colorMap: Record<string, { header: string; badge: string; row: string; price: string }> = {
@@ -155,8 +193,16 @@ const colorMap: Record<string, { header: string; badge: string; row: string; pri
   },
 };
 
-function PricingTable({ category, index }: { category: Category; index: number }) {
-  const c = colorMap[category.color] as (typeof colorMap)[string];
+function PricingTable({
+  category,
+  index,
+  zoneIndex,
+}: {
+  category: Category;
+  index: number;
+  zoneIndex: number;
+}) {
+  const c = colorMap[category.color];
   return (
     <motion.div
       className="rounded-2xl overflow-hidden shadow-sm border border-slate-100"
@@ -183,7 +229,7 @@ function PricingTable({ category, index }: { category: Category; index: number }
                 </span>
               )}
             </div>
-            <span className={`text-lg whitespace-nowrap ${c.price}`}>{item.price}</span>
+            <span className={`text-lg whitespace-nowrap ${c.price}`}>{item.prices[zoneIndex]}</span>
           </div>
         ))}
       </div>
@@ -192,16 +238,50 @@ function PricingTable({ category, index }: { category: Category; index: number }
 }
 
 export default function PricingContent() {
+  const [zoneIndex, setZoneIndex] = useState(0);
+  const zone = zones[zoneIndex];
+
   return (
     <section className="py-16 bg-[#f0f7ff]">
       <div className="max-w-5xl mx-auto px-4">
+        {/* Zone selector */}
+        <motion.div
+          className="mb-8 bg-white rounded-2xl shadow-sm border border-slate-100 p-2 flex gap-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {zones.map((z) => (
+            <button
+              key={z.id}
+              onClick={() => setZoneIndex(z.id)}
+              className={`flex-1 rounded-xl py-3 px-4 transition-all text-center ${
+                zoneIndex === z.id ? z.color + " shadow-md" : "text-slate-500 hover:bg-slate-50"
+              }`}
+            >
+              <div className="font-black text-lg leading-none">{z.label}</div>
+              <div
+                className={`text-xs mt-1 ${zoneIndex === z.id ? "opacity-80" : "text-slate-400"}`}
+              >
+                {z.sublabel}
+              </div>
+              {z.discount && (
+                <div
+                  className={`text-xs font-bold mt-1 ${zoneIndex === z.id ? "opacity-90" : "text-green-600"}`}
+                >
+                  {z.discount}
+                </div>
+              )}
+            </button>
+          ))}
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {categories.map((cat, i) => (
-            <PricingTable key={cat.id} category={cat} index={i} />
+            <PricingTable key={cat.id} category={cat} index={i} zoneIndex={zoneIndex} />
           ))}
         </div>
 
-        {/* Sanitski transport — full width */}
+        {/* Sanitski transport — iste cene za sve zone */}
         <motion.div
           className="rounded-2xl overflow-hidden shadow-sm border border-slate-100 mb-8"
           initial={{ opacity: 0, y: 30 }}
@@ -226,8 +306,8 @@ export default function PricingContent() {
               <span className="text-xl flex-shrink-0">⏱️</span>
               <p className="text-slate-600 text-sm">
                 <strong className="text-slate-800">Čekanje:</strong> Prvi sat čekanja je besplatan.
-                Svaki naredni sat naplaćuje se{" "}
-                <strong className="text-slate-800">3.000 RSD</strong>.
+                Svaki naredni sat naplaćuje se <strong className="text-slate-800">3.000 RSD</strong>
+                .
               </p>
             </div>
           </div>

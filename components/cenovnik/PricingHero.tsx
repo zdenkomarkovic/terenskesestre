@@ -34,8 +34,12 @@ export default function PricingHero() {
             >
               <span className="text-3xl">🎁</span>
               <div className="text-left">
-                <p className="font-black text-teal-300 text-lg leading-tight">BESPLATNO uz svaku posetu</p>
-                <p className="text-blue-200 text-sm">Merenje vitalnih parametara (krvni pritisak, puls, saturacija, temperatura)</p>
+                <p className="font-black text-teal-300 text-lg leading-tight">
+                  BESPLATNO uz svaku posetu
+                </p>
+                <p className="text-blue-200 text-sm">
+                  Merenje vitalnih parametara (krvni pritisak, puls, saturacija, temperatura)
+                </p>
               </div>
             </motion.div>
 
@@ -61,7 +65,7 @@ export default function PricingHero() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <Image
-              src="/FB_IMG_1772578876221.jpg"
+              src="/hero.jpg"
               alt="Infuzijske usluge kod kuće"
               fill
               className="object-cover object-top"
