@@ -139,19 +139,9 @@ const transportItems = [
 ];
 
 const zones = [
-  { id: 0, label: "Zona 1", sublabel: "Beograd", color: "bg-[#0a5c9b] text-white" },
-  {
-    id: 1,
-    label: "Zona 2",
-    sublabel: "uskoro gradovi",
-    color: "bg-[#0f9488] text-white",
-  },
-  {
-    id: 2,
-    label: "Zona 3",
-    sublabel: "uskoro gradovi",
-    color: "bg-purple-600 text-white",
-  },
+  { id: 0, label: "Zona 1", sublabel: "Beograd",        color: "bg-[#0a5c9b] text-white" },
+  { id: 1, label: "Zona 2", sublabel: "uskoro gradovi", color: "bg-[#0f9488] text-white" },
+  { id: 2, label: "Zona 3", sublabel: "uskoro gradovi", color: "bg-purple-600 text-white" },
 ];
 
 const colorMap: Record<string, { header: string; badge: string; row: string; price: string }> = {
@@ -264,13 +254,6 @@ export default function PricingContent() {
               >
                 {z.sublabel}
               </div>
-              {z.discount && (
-                <div
-                  className={`text-xs font-bold mt-1 ${zoneIndex === z.id ? "opacity-90" : "text-green-600"}`}
-                >
-                  {z.discount}
-                </div>
-              )}
             </button>
           ))}
         </motion.div>
