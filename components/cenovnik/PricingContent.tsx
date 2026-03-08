@@ -202,7 +202,7 @@ function PricingTable({
   index: number;
   zoneIndex: number;
 }) {
-  const c = colorMap[category.color];
+  const c = colorMap[category.color] ?? colorMap.blue;
   return (
     <motion.div
       className="rounded-2xl overflow-hidden shadow-sm border border-slate-100"
@@ -242,7 +242,7 @@ export default function PricingContent() {
   const zone = zones[zoneIndex];
 
   return (
-    <section className="py-16 bg-[#f0f7ff]">
+    <section className="py-16 bg-[#f0f7ff] overflow-x-hidden">
       <div className="max-w-5xl mx-auto px-4">
         {/* Zone selector */}
         <motion.div
