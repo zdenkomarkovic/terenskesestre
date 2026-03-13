@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { PHONE_1, PHONE_2 } from "@/lib/constants";
 
 const navLinks = [
@@ -53,10 +54,19 @@ export default function Navbar() {
       </div>
 
       {/* Main nav */}
-      <nav className={`transition-all duration-300 ${solid ? "py-3" : "py-4"}`}>
+      <nav className={`transition-all duration-300 ${solid ? "py-0" : "py-0"}`}>
         <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-          <Link href="/" className={`text-xl font-bold ${solid ? "text-[#0a5c9b]" : "text-white"}`}>
-            <span className="text-teal-400">❤</span> Terenske Sestre
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo.png"
+              alt="Terenske Sestre Velika Porodica"
+              width={75}
+              height={75}
+              className="rounded-full object-cover"
+            />
+            <span className={`text-xl font-bold ${solid ? "text-[#0a5c9b]" : "text-white"}`}>
+              Terenske Sestre
+            </span>
           </Link>
 
           {/* Desktop links */}
